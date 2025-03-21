@@ -7,8 +7,8 @@ jobs:
   update-template:
     runs-on: ubuntu-latest
     env:
-      ORG_NAME: Pearson-Advance
-      TARGET_REPO: catalog-plugin    # NOTE: Temporary target repo
+      ORG_NAME: anfbermudezme
+      TARGET_REPO: Python-For-Data-Science-IBM    # NOTE: Temporary target repo
       GH_TOKEN: ${{ github.token }}
       PR_TEMPLATE_CONTENT: |
         ## Tickets
