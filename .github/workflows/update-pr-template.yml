@@ -2,25 +2,39 @@ name: Update PR Template
 
 on:
   workflow_dispatch:
+    inputs:
+      template_file:
+        description: "Which template file do you want to use? Valid options: mfe_template.md, plugin_template.md, tutor_pearson_plugin_template.md"
+        required: true
+        default: "plugin_template.md"
+      target_repo:
+        description: "Name of the target repository to update"
+        required: true
+        default: "catalog-plugin"
 
 jobs:
   update-template:
     runs-on: ubuntu-latest
     env:
       ORG_NAME: Pearson-Advance
-      TARGET_REPO: catalog-plugin # NOTE: Implement a generalization for all repos.
-      GH_TOKEN: ${{ secrets.REPO_PUSH_TOKEN }}  # NOTE: Implement the correct Github token usage.
+      TARGET_REPO: ${{ github.event.inputs.target_repo }}
+      # NOTE: Implement the correct Github token usage.
+      GH_TOKEN: ${{ secrets.REPO_PUSH_TOKEN }}
     steps:
-      - name: Checkout automation repository
+      - name: Check out this repository (contains the .md files)
         uses: actions/checkout@v3
 
-      # NOTE: Generalize for all md chosing which repos we want to update.
-      - name: Load PR template from file
+      - name: List repository files for debugging (optional)
+        run: |
+          pwd
+          ls -R
+
+      - name: Load chosen template file
         id: load_template
         run: |
-          # Read the content of the PR template file and set it as an output variable
           echo "template<<EOF" >> $GITHUB_OUTPUT
-          cat plugin_template.md >> $GITHUB_OUTPUT
+          # The template file name is chosen at runtime via the `template_file` input
+          cat ${{ github.event.inputs.template_file }} >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Install GitHub CLI (if needed)
@@ -48,14 +62,15 @@ jobs:
             git checkout -b update-pr-template
           fi
           mkdir -p .github
-          # Use the output variable from the 'load_template' step
           echo "${{ steps.load_template.outputs.template }}" > .github/PULL_REQUEST_TEMPLATE.md
           git add .github/PULL_REQUEST_TEMPLATE.md
-          git commit -m "Update PR template" || echo "No changes to commit"
+          git commit -m "docs: update PR template." || echo "No changes to commit"
           git push origin update-pr-template --force
 
-      # NOTE: Update the PR description properly.
       - name: Create Pull Request
         run: |
           cd target-repo
-          gh pr create --title "docs: update PR Template." --body "This PR updates the pull request template for consistency." || echo "PR already exists or cannot be created"
+          gh pr create \
+            --title "docs: update PR Template." \
+            --body "This PR updates the pull request template for consistency." \
+            || echo "PR already exists or cannot be created"
