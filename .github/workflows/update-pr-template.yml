@@ -9,7 +9,7 @@ jobs:
     env:
       ORG_NAME: anfbermudezme
       TARGET_REPO: Python-For-Data-Science-IBM    # NOTE: Temporary target repo
-      GH_TOKEN: ${{ github.token }}
+      GH_TOKEN: ${{ secrets.REPO_PUSH_TOKEN }}
       PR_TEMPLATE_CONTENT: |
         ## Tickets
 
