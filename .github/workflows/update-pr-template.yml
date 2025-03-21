@@ -63,10 +63,10 @@ jobs:
         **Example:**  
         Any additional notes or context that may help reviewers or testers.
     steps:
-      - name: Checkout repository with this action
+      - name: Checkout automation repository
         uses: actions/checkout@v3
 
-      - name: Install GitHub CLI
+      - name: Install GitHub CLI (if needed)
         run: |
           sudo apt-get update
           sudo apt-get install -y gh
@@ -74,6 +74,13 @@ jobs:
       - name: Clone target repository
         run: |
           gh repo clone $ORG_NAME/$TARGET_REPO target-repo
+
+      - name: Configure Git and update remote URL
+        run: |
+          cd target-repo
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/$ORG_NAME/$TARGET_REPO.git
 
       - name: Create branch and update PR template
         run: |
