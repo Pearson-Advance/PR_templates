@@ -4,8 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       template_file:
-        description: "Which template file do you want to use? Valid options: mfe_template.md, plugin_template.md, tutor_pearson_plugin_template.md"
+        description: "Which PR template do you want to use?"
         required: true
+        type: choice
+        options:
+          - mfe_template.md
+          - plugin_template.md
+          - tutor_pearson_plugin_template.md
         default: "plugin_template.md"
       target_repo:
         description: "Name of the target repository to update"
