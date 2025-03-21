@@ -1,13 +1,13 @@
 ## Tickets
 
-- [JIRA Ticket](URL)  
+- [JIRA Ticket](URL)
   *Contains the link to the related task or ticket for this Pull Request from the task management system (e.g., JIRA) to facilitate tracking.*
 
 ## Description
 
 *Briefly describe the purpose of this Pull Request. Provide context about the changes made, explaining the reasons and objectives.*
 
-**Example:**  
+**Example:**
 This PR adds the `BaseDatatableView` Django library to ingest a datatable for displaying the lab detail list.
 
 ## Changes Made
@@ -33,7 +33,7 @@ This PR adds the `BaseDatatableView` Django library to ingest a datatable for di
 
 *If applicable, include screenshots to visually demonstrate the changes you’ve made, especially if they affect the UI or include animated .GIFs showing how to test the functionality.*
 
-**Example:**  
+**Example:**
 ![Example Screenshot](https://example.com/screenshot.png)
 
 ## Dependencies (optional)
@@ -47,5 +47,5 @@ This PR adds the `BaseDatatableView` Django library to ingest a datatable for di
 
 *Include any extra information that might be helpful for reviewers or testers (e.g., details about the test environment, known issues, or limitations).*
 
-**Example:**  
+**Example:**
 Any additional notes or context that may help reviewers or testers.
