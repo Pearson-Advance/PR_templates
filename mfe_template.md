@@ -1,13 +1,14 @@
 ### Ticket
 
-
+- [JIRA Ticket](URL)
+  *Contains the link to the related task or ticket for this Pull Request from the task management system (e.g., JIRA) to facilitate tracking.*
 
 ### Description
 
-* **Summary:** Briefly describe the changes made in this pull request.
-* **Purpose:** Explain why these changes are necessary (e.g., bug fix, new feature, refactoring).
-* **Context:** Provide any relevant background information or context.
-* **Related PRs:** If this PR is related to other PRs, link them here.
+*Briefly describe the purpose of this Pull Request. Provide context about the changes made, explaining the reasons and objectives.*
+
+**Example:**
+This PR adds the `BaseDatatableView` Django library to ingest a datatable for displaying the lab detail list.
 
 ### Type of Change
 
