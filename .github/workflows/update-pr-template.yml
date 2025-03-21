@@ -7,8 +7,8 @@ jobs:
   update-template:
     runs-on: ubuntu-latest
     env:
-      ORG_NAME: anfbermudezme
-      TARGET_REPO: Python-For-Data-Science-IBM    # NOTE: Temporary target repo
+      ORG_NAME: Pearson-Advance
+      TARGET_REPO: catalog-plugin    # NOTE: Temporary target repo
       GH_TOKEN: ${{ secrets.REPO_PUSH_TOKEN }}
       PR_TEMPLATE_CONTENT: |
         ## Tickets
@@ -66,7 +66,7 @@ jobs:
       - name: Checkout automation repository
         uses: actions/checkout@v3
 
-      - name: Install GitHub CLI (if needed)
+      - name: Install GitHub CLI
         run: |
           sudo apt-get update
           sudo apt-get install -y gh
