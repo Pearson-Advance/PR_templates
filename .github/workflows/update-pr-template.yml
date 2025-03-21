@@ -9,6 +9,7 @@ jobs:
     env:
       ORG_NAME: Pearson-Advance
       TARGET_REPO: catalog-plugin    # NOTE: Temporary target repo
+      GH_TOKEN: ${{ github.token }}
       PR_TEMPLATE_CONTENT: |
         ## Tickets
 
